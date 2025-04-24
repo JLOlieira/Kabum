@@ -38,3 +38,13 @@ function scrollFunction() {
         navbar.style.marginTop = "0px";
     }
 }
+
+const left_btn = document.querySelector('.left-arrow');
+left_btn.addEventListener('click', () => {
+    document.querySelector('.offers-articles').scrollBy(-270, 0);
+});
+
+const right_btn = document.querySelector('.right-arrow');
+right_btn.addEventListener('click', () => {
+    document.querySelector('.offers-articles').scrollBy(270, 0);
+});

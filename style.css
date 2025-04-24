@@ -84,6 +84,7 @@ body{
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 20px;
 
             h2{
                 font-size: 20px;
@@ -94,12 +95,11 @@ body{
         .links{
             display: flex;
             flex-direction: column;
-            padding: 20px 10px;
             gap: 5px;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-
+            overflow: hidden auto;
+            
             a{
                 border-radius: 5px;
                 text-decoration: none;
@@ -127,7 +127,7 @@ body{
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 120px;
+            height: 160px;
             gap: 10px;
 
             .login{
@@ -242,6 +242,15 @@ body{
             color: #fff;
         }
     }
+}
+.links::-webkit-scrollbar {
+    width: 4px;
+}
+.links::-webkit-scrollbar-track {
+    background: #2b77b4;
+}
+.links::-webkit-scrollbar-thumb { 
+    background: #79a7cc; 
 }
 
 nav{
@@ -360,6 +369,7 @@ main{
                 gap: 10px;
                 overflow: hidden;
                 margin: 0 40px;
+                scroll-behavior: smooth;
             }
             .wrapper-offers-articles{
                 display: flex;
