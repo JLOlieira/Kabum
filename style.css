@@ -253,7 +253,7 @@ body{
     background: #79a7cc; 
 }
 
-nav{
+#navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -262,8 +262,92 @@ nav{
     height: fit-content;
     padding: 0 60px;
     background-color: #FF6500;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
 
-    a{
+    .departments-container{
+        display: none;
+        position: absolute;
+        top: 100%;
+        align-items: flex-start;
+        text-align: start;
+        background-color: #fafafa;
+
+        ul{
+            overflow: auto;
+            max-height: 370px;
+            scrollbar-width: none;
+        }
+
+        a{
+            text-decoration: none;
+            text-transform: none;
+            font-weight: 400;
+            color: #5c5c5c;
+        }
+
+        .sub-departments{
+            display: block;
+        }
+        .sub-departments li:first-child{
+
+            a{
+                text-transform: none;
+                text-decoration: underline;
+                font-weight: 400;
+                color: #F17A28;
+            }
+        }
+        .sub-departments li:first-child:hover{
+            background-color: #fafafa;
+        }
+        .department-itens li:first-child:hover{
+            background-color: #fafafa;
+        }
+
+        ul li{
+            list-style: none;
+            background-color: #fafafa;
+            padding: 8px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+                text-decoration: none;
+                text-transform: none;
+                font-weight: 400;
+                color: #5c5c5c;
+            }
+            i{
+                margin-left: 42px;
+                color: #5c5c5c;
+            }
+        }
+        ul li:hover{
+            cursor: pointer;
+            background-color: #eeeeee;
+        }
+        .department-itens{
+            display: none;
+        }
+        .department-itens li:first-child{
+            a{
+                text-transform: none;
+                text-decoration: underline;
+                font-weight: 400;
+                color: #F17A28;
+            }
+        }
+    }
+    #arrow{
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .nav-link{
         flex-grow: 1;
         text-decoration: none;
         color: #fff;
@@ -273,17 +357,21 @@ nav{
         padding: 8px 10px;
         border-right: solid 1px #fe9047;
     }
-    a:last-child {
+    .nav-link:first-child {
+        border-right: none;
+        backdrop-filter: brightness(0.8);
+    }
+    .nav-link:last-child {
         border-right: none;
     }
-    a:hover{
+    .nav-link:hover{
         cursor: pointer;
         backdrop-filter: brightness(0.8);
     }
-    a.active{
+    .nav-link.active{
         backdrop-filter: brightness(0.8);
     }
-    a i{
+    .nav-link i{
         margin-left: 8px;
     }
 }

@@ -1,0 +1,59 @@
+{
+    "Departments": [
+        {
+            "Hardware": [
+                {
+                    "Coolers": [
+                        "Acessórios para Cooler",
+                        "Air Cooler",
+                        "Almofada Térmica",
+                        "FAN",
+                        "Pasta Térmica",
+                        "Water Cooler"
+                    ]
+                },
+                { "Disco Rígido(HD)": [] },
+                { "Drives": [] },
+                { "Fontes": [] },
+                { "Kit Hardware": [] },
+                { "Memória RAM": [] },
+                { "Placa de vídeo (VGA)": [] },
+                { "Placas Interfaces": [] },
+                { "Placas-mãe": [] },
+                { "Processadores": [] },
+                { "Serviços": [] },
+                { "SSD": [] }
+
+            ],
+            "Periféricos": [],
+            "Software": [],
+            "Games": [],
+            "Celular & Smartphone": [],
+            "TV": [],
+            "Áudio": [],
+            "Projetores": [],
+            "Espaço Gamer": [],
+            "Escritório": [],
+            "Casa Inteligente": [],
+            "Tablets, iPads e E-readers": [],
+            "Câmeras e Drones": [],
+            "Energia": [],
+            "Conectividade": [],
+            "Geek": [],
+            "Eletrodomésticos": [],
+            "Eletroportáteis": [],
+            "Ar e Ventilação": [],
+            "Segurança": [],
+            "Automação": [],
+            "Telefonia Fixa": [],
+            "Robótica": [],
+            "Serviços Digitais": [],
+            "Benefício": [],
+            "Moda": [],
+            "Ferramentas": [],
+            "Cuidados Pessoais": [],
+            "Brinquedos": [],
+            "Bebês": []
+        }
+    ]
+}
