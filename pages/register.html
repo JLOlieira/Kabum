@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registre-se no KaBuM!</title>
+    <script src="https://kit.fontawesome.com/3a729f56f0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/login-register-style.css">
+</head>
+<body>
+    <header id="header"></header>
+    <form onsubmit="return false" class="register-form">
+        <h2>Criar conta</h2>
+        <div class="account-type">
+            <span>Tipo de conta</span>
+            <div class="input-group">
+                <input type="radio" name="individual" id="individual-input">
+                <label for="individual-input">Pessoa física</label>
+                <input type="radio" name="corporate" id="corporate-input">
+                <label for="corporate-input">Empresa</label>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="" id="google">
+                <i class="fa-brands fa-google"></i>Google
+            </a>
+            <a href="" id="apple">
+                <i class="fa-brands fa-apple"></i>Apple
+            </a>
+        </div>
+        <span class="divider">OU</span>
+        <div class="form-group">
+            <div class="individual-form">
+                <input type="text" placeholder="Nome* completo" id="name">
+                <input type="text" placeholder="CPF*" id="cpf">                
+                <select name="gender" id="gender">
+                    <option selected hidden>Gênero*</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                </select>
+                <input type="text" placeholder="Data de nascimento*" id="birthdate">
+                <input type="tel" placeholder="Telefone celular*" id="phone">
+                <input type="email" placeholder="E-mail*" id="email">
+                <input type="password" placeholder="Crie sua senha*" id="password">
+                <input type="password" placeholder="Confirme sua senha*" id="password-confirm">
+                <select name="where" id="where">
+                    <option selected hidden>Onde você conheceu o KaBuM!</option>
+                    <option value="buscape">BuscaPe</option>
+                    <option value="google">Google</option>
+                    <option value="friend">Indicação de amigo</option>
+                    <option value="fabebook">Fabebook</option>
+                </select>
+            </div>
+            <div class="info">
+                <p>(*) Campos obrigatórios</p>
+                <p>(**) As opções “homem” e “mulher“ abrangem cisgêneros e transgêneros. A opção ”outros” inclui gênero fluido, não-binário, queer, intersexo e outras identidades de gênero. Utilize a opção “não especificar” caso não queira preencher esse campo ou não encontre a opção que mais se identifica.</p>
+            </div>
+            <div class="news">
+                <input type="checkbox" id="news">
+                <label for="news">Quero receber ofertas e novidades por e-mail, SMS, WhatsApp ou mensagens nos App's KaBuM!</label>
+            </div>
+            <div class="terms">
+                <input type="checkbox" id="terms">
+                <label for="terms">Li e estou de acordo com as <a href="">políticas da empresa e políticas de privacidade.*</a></label>
+            </div>
+
+            <a href="" class="continue-btn">Continuar</a>
+        </div>
+    </form>
+
+    <script src="/src/js/script.js" defer></script>
+</body>
+</html>

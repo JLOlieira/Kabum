@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesse sua conta KaBum!</title>
+    <script src="https://kit.fontawesome.com/3a729f56f0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/login-register-style.css">
+</head>
+<body>
+    <header id="header"></header>
+    <form onsubmit="return false">
+        <h2>Acesse sua conta</h2>
+        <div class="input-group">
+            <label for="email">E-mail, CPF ou CNPJ</label>
+            <div class="input email-input">
+                <input type="text" id="email" name="email">
+                <i class="fa-solid fa-user" id="user"></i>
+            </div>
+
+            <span class="error-msg user-error">
+                <i class="fa-solid fa-triangle-exclamation"></i>Este campo precisa ser preenchido
+            </span>
+
+            <label for="password" id="password-label">Senha</label>
+            <div class="input password-input">
+                <input type="password" id="password" name="password">
+                <i class="fa-solid fa-lock" id="lock"></i>
+                <i class="fa-solid fa-eye-slash" id="eye"></i>
+            </div>
+            <span class="error-msg password-error">
+                <i class="fa-solid fa-triangle-exclamation"></i>Este campo precisa ser preenchido
+            </span>
+        </div>
+        <button class="disabled" id="login-btn" type="submit">
+            <i class="fa-solid fa-right-to-bracket"></i>Entrar
+        </button>
+        <a href="" class="forgot-password">Esqueceu a senha?</a>
+
+        <span class="divider">OU</span>
+        <span id="socials-txt">Quero acessar com minhas redes sociais</span>
+
+        <div class="social-links">
+            <a href="" id="google">
+                <i class="fa-brands fa-google"></i>Google
+            </a>
+            <a href="" id="apple">
+                <i class="fa-brands fa-apple"></i>Apple
+            </a>
+        </div>
+        <div class="register-link">
+            <span>Novo no KaBuM!</span>
+            <a href="/pages/register.html">Cadastre-se</a>
+        </div>
+    </form>
+    <script src="/src/js/script.js"></script>
+</body>
+</html>
