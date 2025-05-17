@@ -4,6 +4,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 70px;
 }
 form{
     display: flex;
@@ -208,17 +209,21 @@ form{
                 margin-left: 6px;
                 margin-right: 26px;
             }
+            input[type="radio"] {
+                accent-color: var(--orange);
+                width: 18px;
+                height: auto;
+            }
         }
     }
     .social-links{
         flex-direction: row;
     }
     .divider{
-        margin: 20px 0;
+        margin: 10px 0;
     }
     .form-group{
-        
-        .individual-form{
+        .form{
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
@@ -233,6 +238,10 @@ form{
                 border: solid 1px var(--gray); 
                 padding: 10px;
                 font-size: 16px;
+                background: none;
+            }
+            input::placeholder{
+                color: var(--gray);
             }
             input:focus, select:focus{
                 outline: none;
@@ -262,6 +271,7 @@ form{
                 accent-color: var(--orange);
             }
             
+            
             label{
                 margin-left: 6px;
                 
@@ -270,14 +280,15 @@ form{
                 }
             }
         }
+        
         .continue-btn{
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            justify-self: center;
+            width: 60%;
             height: 48px;
-            margin-top: 40px;
-            margin-bottom: 70px;
+            margin: 40px 0;
             border: none;
             background-color: var(--orange);
             color: var(--white);
@@ -285,6 +296,17 @@ form{
             font-weight: 700;
             border-radius: 6px;
             text-decoration: none;
+        }
+        .login-link{
+            display: flex;
+            align-items: center;
+            justify-self: center;
+
+            a{
+                color: var(--orange);
+                text-transform: uppercase;
+                margin-left: 6px;
+            }
         }
     }
 }

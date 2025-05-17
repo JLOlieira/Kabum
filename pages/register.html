@@ -15,23 +15,23 @@
         <div class="account-type">
             <span>Tipo de conta</span>
             <div class="input-group">
-                <input type="radio" name="individual" id="individual-input">
+                <input type="radio" name="individual" id="individual-input" checked>
                 <label for="individual-input">Pessoa física</label>
                 <input type="radio" name="corporate" id="corporate-input">
-                <label for="corporate-input">Empresa</label>
+                <label for="corporate-input">Pessoa jurídica</label>
             </div>
         </div>
-        <div class="social-links">
-            <a href="" id="google">
-                <i class="fa-brands fa-google"></i>Google
-            </a>
-            <a href="" id="apple">
-                <i class="fa-brands fa-apple"></i>Apple
-            </a>
-        </div>
-        <span class="divider">OU</span>
         <div class="form-group">
-            <div class="individual-form">
+            <div class="individual-form form">
+                <div class="social-links">
+                    <a href="" id="google">
+                        <i class="fa-brands fa-google"></i>Google
+                    </a>
+                    <a href="" id="apple">
+                        <i class="fa-brands fa-apple"></i>Apple
+                    </a>
+                </div>
+                <span class="divider">OU</span>
                 <input type="text" placeholder="Nome* completo" id="name">
                 <input type="text" placeholder="CPF*" id="cpf">                
                 <select name="gender" id="gender">
@@ -53,9 +53,35 @@
                     <option value="fabebook">Fabebook</option>
                 </select>
             </div>
+            <div class="corporate-form form">
+                <input type="text" placeholder="Nome fantasia*" id="name">
+                <input type="text" placeholder="Razão social*" id="razao-social">
+                <input type="text" placeholder="CNPJ*" id="cnpj">
+                <input type="tel" placeholder="Data de abertura da empresa*" id="data-abertura">
+                <select name="tributacao" id="tributacao">
+                    <option selected hidden>Tributação*</option>
+                    <option value="1">Contribuinte ICMS</option>
+                    <option value="0">Não Contribuinte ICMS</option>
+                    <option value="2">Isento de inscrição estadual</option>
+                </select>
+                <input type="text" placeholder="Inscrição estadual*" id="inscricao-estadual">
+                <input type="text" placeholder="Nome do Responsável pela compra*" id="responsavel-compra">
+                <input type="tel" placeholder="Telefone celular*" id="telefone-celular">
+                <input type="tel" placeholder="Telefone para contato*" id="telefone-contato">
+                <input type="email" placeholder="E-mail*" id="email">
+                <input type="password" placeholder="Crie sua senha*" id="password">
+                <input type="password" placeholder="Confirme sua senha*" id="password-confirm">
+                <select name="where" id="where">
+                    <option selected hidden>Onde você conheceu o KaBuM!</option>
+                    <option value="buscape">BuscaPe</option>
+                    <option value="google">Google</option>
+                    <option value="friend">Indicação de amigo</option>
+                    <option value="fabebook">Fabebook</option>
+                </select>
+            </div>
             <div class="info">
                 <p>(*) Campos obrigatórios</p>
-                <p>(**) As opções “homem” e “mulher“ abrangem cisgêneros e transgêneros. A opção ”outros” inclui gênero fluido, não-binário, queer, intersexo e outras identidades de gênero. Utilize a opção “não especificar” caso não queira preencher esse campo ou não encontre a opção que mais se identifica.</p>
+                <p class="gender-info">(**) As opções “homem” e “mulher“ abrangem cisgêneros e transgêneros. A opção ”outros” inclui gênero fluido, não-binário, queer, intersexo e outras identidades de gênero. Utilize a opção “não especificar” caso não queira preencher esse campo ou não encontre a opção que mais se identifica.</p>
             </div>
             <div class="news">
                 <input type="checkbox" id="news">
@@ -65,11 +91,14 @@
                 <input type="checkbox" id="terms">
                 <label for="terms">Li e estou de acordo com as <a href="">políticas da empresa e políticas de privacidade.*</a></label>
             </div>
-
-            <a href="" class="continue-btn">Continuar</a>
+            
+            <a href="" class="continue-btn" type="submit">Continuar</a>
+            
+            <span class="login-link">Já possui cadastro? <a href="/pages/login.html">Entrar</a></span>
+        </div>
         </div>
     </form>
 
-    <script src="/src/js/script.js" defer></script>
+    <script src="/src/js/script.js"></script>
 </body>
 </html>

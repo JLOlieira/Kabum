@@ -2,7 +2,13 @@ window.addEventListener('load', () => {
     const header = document.getElementById('header');
     const navbar = document.getElementById('navbar');
 
-    const fetchHeader = fetch('/src/components/header.html')
+    let headerComponent = '';
+    if (window.innerWidth < 1024) {
+        headerComponent = '/src/components/mobile-header.html';
+    } else {
+        headerComponent = '/src/components/header.html';
+    }
+    let fetchHeader = fetch(headerComponent)
     .then(response => response.text())
     .then(html => {
         header.innerHTML = html;
@@ -19,7 +25,18 @@ window.addEventListener('load', () => {
         init();
     })
     .catch(error => console.error('Erro:', error));
+
+    document.head.innerHTML += `
+    <link rel="stylesheet" href="/src/css/responsive.css">
+    `;
 });
+window.onload = function() {
+    var link = top.document.createElement('link');
+    link.href = '/icon.jpeg';
+    link.rel = 'icon';
+    link.type = 'image/x-icon';
+    top.document.getElementsByTagName('head')[0].appendChild(link);
+};
 
 function init() {
     const leftMenu_container = document.querySelector('.left-menu-container');
@@ -50,14 +67,24 @@ function init() {
     window.onscroll = function() {scrollFunction()};
     
     function scrollFunction() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            header.style.height = "70px";
-            header.style.position = "fixed";
-            navbar.style.marginTop = "70px";
+        if (window.innerWidth >= 1024) {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                header.style.height = "70px";
+                header.style.position = "fixed";
+                navbar.style.marginTop = "70px";
+            } else {
+                header.style.height = "105px";
+                header.style.position = "static";
+                navbar.style.marginTop = "0px";
+            }
         } else {
-            header.style.height = "105px";
-            header.style.position = "static";
-            navbar.style.marginTop = "0px";
+            if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+                header.style.position = "fixed";
+                body.style.marginTop = "110px";
+            }else {
+                header.style.position = "static";
+                body.style.marginTop = "0px";
+            }
         }
     }
     if(window.location.href.includes('index.html')){
@@ -230,11 +257,30 @@ if (window.location.href.includes('login.html')) {
 }
 const individualAccoutType = document.querySelector('#individual-input');
 const corporateAccoutType = document.querySelector('#corporate-input');
+const individualForm = document.querySelector('.individual-form');
+const corporateForm = document.querySelector('.corporate-form');
+const gerderInfo = document.querySelector('.gender-info');
 
 document.addEventListener('click', (e) => {
     if (e.target.id === 'individual-input') {
         corporateAccoutType.checked = false;
+        individualForm.style.display = 'flex';
+        corporateForm.style.display = 'none';
+        gerderInfo.style.display = 'flex';
     }else if (e.target.id === 'corporate-input') {
         individualAccoutType.checked = false;
+        individualForm.style.display = 'none';
+        corporateForm.style.display = 'flex';
+        gerderInfo.style.display = 'none';
     }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    if (individualAccoutType.checked){
+        individualForm.style.display = 'flex';
+        corporateForm.style.display = 'none';
+        gerderInfo.style.display = 'flex';
+    }
+});
+document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+    input.checked = true;
 });

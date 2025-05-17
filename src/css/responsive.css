@@ -1,0 +1,100 @@
+@media screen and (max-width: 1024px) {
+    #navbar{
+        display: none;
+    }
+    #header{
+        padding: 10px;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        position: static;
+
+        .header-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+    
+            .header-logo{
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                img{
+                    width: 120px;
+                }
+            }
+            .left-menu-btn, .right-menu{
+                margin-top: 8px;
+            }
+        }
+        .search-imput{
+            width: 100%;
+
+            input{
+                width: 100%;
+                border-radius: 6px;
+            }
+            button{
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                width: auto;
+                height: 100%;
+                aspect-ratio: 1/1;
+                color: var(--black);
+            }
+        }
+        .left-menu-container{
+            height: 100%;
+
+            .leftmenu-login-register{
+                margin-bottom: 50px;
+            }
+        }
+    }
+    .banner{   
+        a{
+            justify-content: flex-start;
+            
+            img{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+    }
+    main{
+        padding: 0;
+
+        .header-main{
+            padding: 10px;
+            
+            h2, div>p{
+                font-size: 1rem;
+            }
+        }
+        .container{
+            padding: 10px;
+            .payday-offers{
+                
+                .left-arrow, .right-arrow{
+                    display: none;
+                }
+                .offers-articles{
+                    margin: 0;
+                    overflow-x: auto;
+                }
+            }
+            .promo-banners{
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    }
+    .register-form{
+        width: 100%;
+        padding: 0 20px;
+    }
+}
