@@ -55,6 +55,12 @@ function init() {
         leftMenu_container.classList.remove('active');
         leftMenu.classList.remove('active');
         body.style.overflow = 'auto';
+        const departmentWrapper = document.querySelector('.departments');
+        departmentWrapper.style.display = 'none';
+        const subDepartmentWrapper = document.querySelector('.sub-departments');
+        subDepartmentWrapper.style.display = 'none';
+        const departmentItensWrapper = document.querySelector('.department-itens');
+        departmentItensWrapper.style.display = 'none';
     });
     leftMenu_container.addEventListener('click', (e) => {
         if (e.target === leftMenu_container) {
@@ -87,7 +93,7 @@ function init() {
             }
         }
     }
-    if(window.location.href.includes('index.html')){
+    if(window.location.href.includes('')){
         const left_btn = document.querySelector('.left-arrow');
         left_btn.addEventListener('click', () => {
             document.querySelector('.offers-articles').scrollBy(-270, 0);
@@ -101,22 +107,22 @@ function init() {
         const departments_btn = document.querySelector('.departments-btn');
         const arrow = document.querySelector('#arrow');
         const departmentsContainer = document.querySelector('.departments-container');
-        const subDepartments = document.querySelector('.sub-departments');
-        
-        departments_btn.addEventListener('mouseover', () => {
-            arrow.style.transform = 'rotate(-180deg)';
-            departmentsContainer.style.display = 'flex';
-            subDepartmentWrapper.innerHTML = '';
-        });
-        document.addEventListener('mousemove', (e) => {
-            const to = e.target;
-        
-            if (!departmentsContainer.contains(to) && !departments_btn.contains(to)) {
-                arrow.style.transform = 'rotate(0deg)';
-                departmentsContainer.style.display = 'none';
-            }
-        });
-        
+        if (window.innerWidth >= 1024) {
+            departments_btn.addEventListener('mouseover', () => {
+                arrow.style.transform = 'rotate(-180deg)';
+                departmentsContainer.style.display = 'flex';
+                subDepartmentWrapper.innerHTML = '';
+            });
+            document.addEventListener('mousemove', (e) => {
+                const to = e.target;
+            
+                if (!departmentsContainer.contains(to) && !departments_btn.contains(to)) {
+                    arrow.style.transform = 'rotate(0deg)';
+                    departmentsContainer.style.display = 'none';
+                }
+            });
+        }
+
         let departmentID = "";
         const departmentWrapper = document.querySelector('.departments');
         const subDepartmentWrapper = document.querySelector('.sub-departments');
@@ -141,15 +147,35 @@ function init() {
                         `;
                             departmentWrapper.innerHTML += departmentElement;
                         });
-        
-                        departmentWrapper.addEventListener('mouseover', (e) => {
+                        let event = '';
+                        if (window.innerWidth < 1024) {
+                            event = 'click';
+                        } else {
+                            event = 'mouseover';
+                        }
+                        departmentWrapper.addEventListener(event, (e) => {
                             const target = e.target;
                             departmentItensWrapper.innerHTML = '';
                             if (target.id) {
                                 departmentID = target.id;
-                                subDepartmentWrapper.innerHTML = `<li>
-                                                <a href="">Ver tudo de ${target.id}</a>
-                                            </li>`;
+                                if (window.innerWidth < 1024) {
+                                    departmentWrapper.style.display = 'none';
+                                    subDepartmentWrapper.style.display = 'flex';
+                                    subDepartmentWrapper.innerHTML = `
+                                    <div class= "buttons">
+                                        <button class="backToDep" onclick="backToDepartment()">
+                                            <i class="fa-solid fa-angle-left"></i>
+                                            Voltar
+                                        </button>
+                                        <a href="">Ver tudo de ${target.id}</a>
+                                    </div>`;
+                                 
+                                } else {
+                                    subDepartmentWrapper.innerHTML = `
+                                                <li>
+                                                    <a href="">Ver tudo de ${target.id}</a>
+                                                </li>`;
+                                }         
         
                                 if (department[departmentID]) {
                                     department[departmentID].forEach(subDepartment => {
@@ -163,18 +189,30 @@ function init() {
                                             subDepartmentWrapper.innerHTML += subDepartmentElement; 
                                         });
         
-                                        subDepartmentWrapper.addEventListener('mouseover', (e) => {
+                                        subDepartmentWrapper.addEventListener(event, (e) => {
                                             const subtarget = e.target;
                                             if (subtarget.id) {
                                                 departmentItensWrapper.style.display = 'block';
-                                              const subDepartmentID = subtarget.id;
-                                              
-                                              if (subDepartment[subDepartmentID]) {
-                                                  departmentItensWrapper.innerHTML = '';
-                                                  departmentItensWrapper.innerHTML = `
-                                                  <li>
-                                                    <a href="">Ver tudo de ${subtarget.id}</a>
-                                                </li>`;
+                                                const subDepartmentID = subtarget.id;
+                                                
+                                                if (subDepartment[subDepartmentID]) {
+                                                    departmentItensWrapper.innerHTML = '';
+                                                    if (window.innerWidth < 1024) {
+                                                        subDepartmentWrapper.style.display = 'none';
+                                                        departmentItensWrapper.innerHTML = `
+                                                        <div class= "buttons">
+                                                            <button class="backToSubDep" onclick="backToSubDepartment()">
+                                                                <i class="fa-solid fa-angle-left"></i>
+                                                                Voltar
+                                                            </button>
+                                                            <a href="">Ver tudo de ${subtarget.id}</a>
+                                                        </div>`;
+                                                    } else {
+                                                        departmentItensWrapper.innerHTML = `
+                                                        <li>
+                                                            <a href="">Ver tudo de ${subtarget.id}</a>
+                                                        </li>`;
+                                                    }
                                           
                                                 subDepartment[subDepartmentID].forEach(item => {
                                                   const itemElement = `
@@ -186,7 +224,7 @@ function init() {
                                               }
                                             }
                                           
-                                            subtarget.addEventListener('mouseover', (e) => {
+                                            subtarget.addEventListener(event, (e) => {
                                               if (e.target.classList.contains('department-itens')) {
                                                 departmentItensWrapper.innerHTML = itemElement;
                                               }                                      
@@ -203,8 +241,45 @@ function init() {
                 })
                 .catch(error => console.error('Erro:', error));
         }
+        
         getDepartmentData();
     };
+    const m_departments_btn = document.querySelector('.departments-btn');
+    const m_navbar = document.querySelector('#mobile-nav');
+    const departmentWrapper = document.querySelector('.departments');
+    const subDepartmentWrapper = document.querySelector('.sub-departments');
+    const departmentItensWrapper = document.querySelector('.department-itens');
+
+    m_departments_btn.addEventListener('click', () => {
+        if (m_navbar.style.display === 'none') {
+            m_navbar.style.display = 'flex';
+            departmentWrapper.style.display = 'flex';
+            subDepartmentWrapper.style.display = 'none';
+            departmentItensWrapper.style.display = 'none';
+        }else {
+            m_navbar.style.display = 'none';
+        }
+    });
+
+    if (window.innerWidth < 1024) {
+        departmentWrapper.style.display = 'flex';
+        subDepartmentWrapper.style.display = 'none';
+        departmentItensWrapper.style.display = 'none';
+    }
+};
+function backToDepartment() {
+    const departmentWrapper = document.querySelector('.departments');
+    departmentWrapper.style.display = 'flex';
+    const subDepartmentWrapper = document.querySelector('.sub-departments');
+    subDepartmentWrapper.style.display = 'none';
+    const departmentItensWrapper = document.querySelector('.department-itens');
+    departmentItensWrapper.style.display = 'none';
+};
+function backToSubDepartment() {
+    const subDepartmentWrapper = document.querySelector('.sub-departments');
+    subDepartmentWrapper.style.display = 'flex';
+    const departmentItensWrapper = document.querySelector('.department-itens');
+    departmentItensWrapper.style.display = 'none';
 };
 
 
@@ -280,6 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
         corporateForm.style.display = 'none';
         gerderInfo.style.display = 'flex';
     }
+
 });
 document.querySelectorAll('input[type="checkbox"]').forEach(input => {
     input.checked = true;
